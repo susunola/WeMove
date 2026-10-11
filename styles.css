@@ -194,3 +194,9 @@ body,html[lang="zh-CN"] body{-webkit-font-smoothing:auto}
 
 /* Keep all providers accessible at compact window heights. */
 #accounts{min-height:0;overflow-y:auto;flex:1;scrollbar-width:thin}.sidebar-bottom{flex-shrink:0}.sidebar-note{flex-shrink:0}
+
+/* Directory refresh feedback follows the request lifecycle. */
+.directory-refresh.is-refreshing svg{animation:directory-refresh-spin .85s linear infinite;transform-origin:center}
+.directory-refresh.is-refreshing:disabled{opacity:.75;cursor:progress}
+@keyframes directory-refresh-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.directory-refresh.is-refreshing svg{animation:none}}
