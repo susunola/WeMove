@@ -28,7 +28,7 @@ const server=http.createServer(async(req,res)=>{let u;try{u=new URL(req.url,'htt
  case '/reorder':if(!['up','down'].includes(b.direction))throw Error('方向无效');queue.reorder(b.id,b.direction);break;
  case '/cache-info':result=queue.cacheInfo();break;
  case '/cache-clean':result=queue.cleanCache();break;
- case '/history-clear':queue.clearCompleted();break;
+ case '/history-clear':result={count:queue.clearFinished()};break;
  case '/resume-all':if(auth.busy()||deletion.status==='running')throw Error('请等待授权或删除完成');result={count:queue.resumeAll()};break;
  case '/pause':queue.pause(b.id);break;case '/pause-all':queue.pauseAll();break;case '/resume':if(auth.busy())throw Error('请先完成当前授权');if(deletion.status==='running')throw Error('请等待删除完成');queue.resume(b.id);break;
  case '/login':if(deletion.status==='running')throw Error('请等待删除完成');if(queue.busy()||plans.busy())throw Error('请先暂停传输和扫描再连接账号');compareEpoch++;comparePlans.clear();auth=createAuth({...providers.context(b.provider,b.account||providers.root(b.provider).account),log});auth.start(b.provider);break;case '/login-continue':auth.continueAnswer(b.answer||'');break;case '/login-cancel':auth.cancel();break;
