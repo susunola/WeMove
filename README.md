@@ -73,3 +73,5 @@ The current macOS application uses ad-hoc signing. A formal distribution still n
 Third-party license files are retained in the repository; see the `*-LICENSE` files. No open-source license has been selected for WeMove's own code yet.
 
 Do not commit account configurations, cookies, access keys, task records, or user files.
+
+[Additional storage connections](docs/extended-storage.md) — Google Drive · Dropbox · Box · pCloud · MEGA · Nextcloud · FTP/FTPS · SFTP · WebDAV · SMB.

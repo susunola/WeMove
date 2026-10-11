@@ -73,3 +73,5 @@ npm test
 第三方组件的许可证随仓库保留，参见各 `*-LICENSE` 文件。仓库暂未为 WeMove 自有代码指定开源许可证。
 
 请勿提交账号配置、Cookie、访问密钥、任务记录或用户文件。
+
+[扩展存储连接说明](docs/extended-storage.md) — Google Drive · Dropbox · Box · pCloud · MEGA · Nextcloud · FTP/FTPS · SFTP · WebDAV · SMB.
