@@ -19,3 +19,5 @@ Retrieved 2026-10-11. All trademarks remain with their respective owners.
 - FTP, SFTP, WebDAV, SMB: original protocol illustrations by WeMove, not third-party brand marks.
 
 These marks identify compatible third-party services, not WeMove branding or endorsement.
+
+- SharePoint: Microsoft official product icon, https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/sharepoint_48x1.svg . OneDrive for Business and Google Shared Drives reuse their provider brand marks.

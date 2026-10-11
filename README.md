@@ -75,3 +75,5 @@ Third-party license files are retained in the repository; see the `*-LICENSE` fi
 Do not commit account configurations, cookies, access keys, task records, or user files.
 
 [Additional storage connections](docs/extended-storage.md) — Google Drive · Dropbox · Box · pCloud · MEGA · Nextcloud · FTP/FTPS · SFTP · WebDAV · SMB.
+
+[Enterprise shared drives](docs/enterprise-storage.md) — SharePoint · OneDrive for Business · Google Shared Drives.
