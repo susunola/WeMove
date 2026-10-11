@@ -6,6 +6,18 @@ A local, dual-pane cloud transfer tool for macOS. Current version: **0.8.0**. Th
 
 Copy files between **Aliyun Drive, Quark Drive, OneDrive, Nutstore, Baidu Netdisk, and S3-compatible storage** from one workspace.
 
+## Screenshots
+
+Current interface, rendered with isolated demo files and tasks. No real account or user data is shown.
+
+**Dual-pane workspace** — browse both drives, compare folders, and resize the file panes and transfer queue.
+
+![WeMove dual-pane workspace in English](docs/screenshots/workspace-en.png)
+
+**Transfer queue** — progress, transfer speed, task states, and pause/resume controls in one view.
+
+![WeMove transfer queue in English](docs/screenshots/transfer-queue-en.png)
+
 ## Features
 
 - Browse two cloud folders side by side; copy in either direction and upload local files by dragging them into a pane.
