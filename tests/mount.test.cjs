@@ -10,10 +10,10 @@ test('mount support detection', () => {
   assert.equal(isMountSupported('onedrive'), false);
 });
 
-test('mount hints for s3', async () => {
-  const hint = await mountHint('s3', { path: 'bucket/folder' });
+test('mount commands for s3', async () => {
+  const hint = await mountHint('s3', { path: 'mybucket/folder' });
   assert.equal(hint.type, 's3');
-  assert.match(hint.suggestion, /rclone/);
+  assert.ok(hint.commands.some(c => c.includes('rclone mount')));
 });
 
 test('mount hints for webdav-like', async () => {
