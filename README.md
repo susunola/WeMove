@@ -2,7 +2,7 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-A local, dual-pane cloud transfer tool for macOS. Current version: **0.8.0**. The macOS application is currently named **网盘搬运助手**.
+A local, dual-pane cloud transfer tool for macOS. Current version: **0.9.0**. The macOS application is currently named **网盘搬运助手**.
 
 Copy files between **Aliyun Drive, Quark Drive, OneDrive, Nutstore, Baidu Netdisk, iCloud Drive, Tencent Weiyun, 115 Drive, and S3-compatible storage** from one workspace.
 
@@ -23,7 +23,11 @@ Current interface, rendered with isolated demo files and tasks. No real account 
 ## Features
 
 - Browse two cloud folders side by side; copy in either direction and upload local files by dragging them into a pane.
-- Compare directories, preview a transfer, and copy missing or updated files.
+- Compare directories, preview a transfer, and copy missing or updated files. Supports one-way mirror sync mode and basic file filters (extension, size, exclude rules).
+- Conflict handling: stop, overwrite, rename, or skip on name collisions.
+- Extended server-side copy support where providers allow (same account preferred).
+- Menu bar resident mode with background task continuation (app can minimize while transfers run).
+- Optional basic Finder mount support for selected providers (experimental).
 - Run multiple tasks with configurable file concurrency, per-account limits, automatic retries, and adaptive throttling.
 - Pause and resume tasks. SQLite checkpoints preserve task state; supported providers can resume downloads or upload sessions.
 - Connect multiple accounts and S3 buckets. Persisted credentials are encrypted with a key stored in macOS Keychain.
@@ -59,6 +63,7 @@ The current macOS application uses ad-hoc signing. A formal distribution still n
 - [Performance and reliability](docs/performance-reliability.md)
 
 - [User guide (Chinese)](使用说明.md)
+- [Version 0.9.0 enhancements (Chinese)](增强功能使用说明-v0.9.0.md)
 - [Version 0.8.0 enhancements (Chinese)](增强功能使用说明-v0.8.0.md)
 - [Build instructions (Chinese)](构建说明.md)
 - [Three interactive UI design concepts](designs/wemove-ui-concepts.html) — design exploration, not the released interface
