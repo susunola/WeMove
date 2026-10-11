@@ -21,3 +21,8 @@ vendor/aliyunpan
 vendor/BaiduPCS-Go
 vendor/ali-bridge
 vendor/baidu-bridge
+
+vendor/keychain-bridge
+*.sqlite*
+credentials.sealed.json
+.credentials-runtime/
