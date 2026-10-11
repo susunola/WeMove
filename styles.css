@@ -200,3 +200,8 @@ body,html[lang="zh-CN"] body{-webkit-font-smoothing:auto}
 .directory-refresh.is-refreshing:disabled{opacity:.75;cursor:progress}
 @keyframes directory-refresh-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.directory-refresh.is-refreshing svg{animation:none}}
+
+.queue-columns .queue-sort{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;padding:0;min-height:24px;border-radius:4px;color:inherit;font:inherit;cursor:pointer;box-shadow:none}
+.queue-sort::after{content:attr(data-direction);font-size:12px;color:#4c6fa8;min-width:10px}
+.queue-columns .queue-sort:hover{color:#26354c;background:transparent}
+.queue-columns .queue-sort:focus-visible{outline:2px solid #6c8fe1;outline-offset:4px}
