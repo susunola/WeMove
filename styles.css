@@ -179,6 +179,15 @@ html[lang="zh-CN"] body,html[lang="zh-CN"] .file-table td,html[lang="zh-CN"] .fi
 button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline-color:#9cafd0}.app-header>#help:hover,.pane-head .icon-button:hover{background:#f1f4f9;color:#617695}.auth-progress,.feature-card,.copy-manifest{color:#62728b}.feature-route,.preview-path{color:#71829c!important}.feature-status,.feature-card small{color:#8796ac}.tool-actions button:hover{background:#f0f3f8}.form-error{line-height:1.6}dialog .dialog-footer{border-color:#e9edf3}dialog p,html[lang="zh-CN"] dialog p{color:#758399}
 
 /* Packaged Latin typography; Chinese retains WenKai. */
-@font-face{font-family:"WeMove Montserrat";font-style:normal;font-weight:100 900;font-display:swap;src:local("Montserrat"),url("/assets/fonts/Montserrat-Variable.ttf?key=__KEY__") format("truetype");unicode-range:U+0000-024F,U+1E00-1EFF,U+2000-206F,U+20A0-20CF;}
+@font-face{font-family:"WeMove Montserrat";font-style:normal;font-weight:100 499;font-display:swap;font-variation-settings:"wght" 500;src:local("Montserrat-Thin"),url("/assets/fonts/Montserrat-Variable.ttf?key=__KEY__") format("truetype");unicode-range:U+0000-024F,U+1E00-1EFF,U+2000-206F,U+20A0-20CF;}
+@font-face{font-family:"WeMove Montserrat";font-style:normal;font-weight:500 900;font-display:swap;src:local("Montserrat-Thin"),url("/assets/fonts/Montserrat-Variable.ttf?key=__KEY__") format("truetype");unicode-range:U+0000-024F,U+1E00-1EFF,U+2000-206F,U+20A0-20CF;}
 :root{font-family:"WeMove Montserrat","WeMove WenKai",-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
 .brand{font-family:"WeMove Montserrat",sans-serif}
+
+/* Clear small Latin text without changing Chinese glyph weight. */
+body,html[lang="zh-CN"] body{-webkit-font-smoothing:auto}
+.brand-move{transform:none;font-weight:750}.brand-we{font-weight:550}
+.file-table .size,.file-table .modified,.job-route,.transfer-metrics{color:#60728e}
+.file-table th,.queue-columns,.pane-footer,#queue-summary,.progress-percent{color:#6e7e95}
+.pane-head>button:not(.icon-button),.pane-head .connection,.crumbs button{color:#687b96}
+.context button{font-weight:500}html[lang="en"] button,html[lang="en"] input,html[lang="en"] select,html[lang="en"] .file-name{font-weight:500}
