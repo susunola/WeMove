@@ -192,7 +192,7 @@ async function showReports(){return action(async()=>{const {reports}=await api('
       if (event.button !== 0) return;
       activePointer = event.pointerId;
       handle.setPointerCapture(activePointer);
-      handle.focus();
+      handle.blur();
       event.preventDefault();
       document.body.classList.add('layout-dragging');
     });
