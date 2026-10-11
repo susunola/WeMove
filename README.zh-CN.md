@@ -56,6 +56,8 @@ npm test
 
 ## 文档
 
+- [性能优化与故障恢复](docs/performance-reliability.md)
+
 - [使用说明](使用说明.md)
 - [0.8.0 增强功能](增强功能使用说明-v0.8.0.md)
 - [构建说明](构建说明.md)

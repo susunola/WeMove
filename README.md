@@ -56,6 +56,8 @@ The current macOS application uses ad-hoc signing. A formal distribution still n
 
 ## Documentation
 
+- [Performance and reliability](docs/performance-reliability.md)
+
 - [User guide (Chinese)](使用说明.md)
 - [Version 0.8.0 enhancements (Chinese)](增强功能使用说明-v0.8.0.md)
 - [Build instructions (Chinese)](构建说明.md)
