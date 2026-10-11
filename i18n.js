@@ -1,5 +1,6 @@
 (function(root){'use strict';
 const english={
+"共享云盘":"Shared drives","企业版":"Business",
 "清理已结束":"Clear finished","已清理已完成和已取消任务；其他任务保留":"Completed and canceled tasks cleared; other tasks retained",
 "扫描未完成，文件数量尚未统计":"Scan incomplete; file counts are not available yet","源端重名项（整组跳过，不修改源文件）：":"Source duplicates (entire groups skipped; source files unchanged):","跳过源端重名项并继续":"Skip source duplicate groups and continue",
 "镜像同步":"Mirror sync","停止":"Stop","覆盖":"Overwrite","重命名":"Rename","跳过":"Skip","冲突：":"Conflict: ","镜像同步（目标尽量与源一致）":"Mirror sync (match destination to source)","冲突策略":"Conflict policy","覆盖（需确认）":"Overwrite (confirmation required)","保留双方（自动重命名）":"Keep both (auto rename)","镜像时将目标多余文件移入回收站（需确认）":"Move extra destination files to trash during mirror sync (confirmation required)","镜像模式：目标多余文件将按确认移入回收站":"Mirror mode: confirmed extra destination files will be moved to trash","服务端复制：":"Server-side copy: "," 成功 · ":" succeeded \u00b7 "," 回退":" fell back",
