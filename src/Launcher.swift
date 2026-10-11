@@ -80,9 +80,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     process?.terminate()
   }
 
-  func notifyCompletion() {
-    // Placeholder: in full build use UNUserNotificationCenter or NSUserNotification
-    // for task completion alerts while running as accessory
+  func notifyCompletion(title: String = "传输完成", body: String = "有任务已完成") {
+    // Simple system notification via NSUserNotification (legacy but works) or log
+    let notification = NSUserNotification()
+    notification.title = title
+    notification.informativeText = body
+    notification.soundName = NSUserNotificationDefaultSoundName
+    NSUserNotificationCenter.default.deliver(notification)
   }
 }
 
