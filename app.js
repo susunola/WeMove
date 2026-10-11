@@ -140,3 +140,89 @@ function downloadJSON(filename,value){const url=URL.createObjectURL(new Blob([JS
 async function showAccounts(side){return action(async()=>{const provider=panes[side].provider,{accounts}=await api('/accounts'),body=el('div');for(const a of accounts.filter(a=>a.provider===provider)){body.append(button(a.name+(a.id===(panes[side].ref.account||'default')?' ✓':''),()=>action(async()=>{const {ref}=await api('/account-select',{provider,id:a.id});panes[side].ref=ref;panes[side].trail=[];panes[side].ready=false;directoryCache.clear();$('simple-dialog').close();await poll();await load(side,true)})))}const form=el('form');field(form,'name',t('账号名称'));const add=button(t('添加账号 / Bucket'),null,'primary');add.type='submit';form.append(add);form.onsubmit=ev=>{ev.preventDefault();action(async()=>{const {ref}=await api('/account-add',{provider,name:form.elements.name.value});panes[side].ref=ref;panes[side].trail=[];panes[side].ready=false;$('simple-dialog').close();await poll();await load(side,true);showConnect(provider,ref.account)})};body.append(form);simple(t('账号管理'),body)})}
 async function showReport(id){return action(async()=>{const r=await api('/report',{id}),body=el('div');const modes={hash:t('远端哈希一致'),readback:t('回读内容一致'),metadata:t('仅元数据匹配'),'not-verified':t('未验证')};body.append(button(t('导出报告'),()=>downloadJSON('WeMove-'+id+'.json',r)));for(const f of r.files.slice(0,200)){const row=el('p','',f.path+' · '+(modes[f.verification]||f.verification));if(f.error)row.append(el('span','form-error',' · '+tm(f.error)));body.append(row)}if(r.files.length>200)body.append(el('p','',t('完整清单请导出报告')));simple(t('校验报告'),body)})}
 async function showReports(){return action(async()=>{const {reports}=await api('/reports'),body=el('div');for(const r of reports.slice(0,100))body.append(button(fullDate(r.recordedAt)+' · '+(states[r.status]||r.status)+' · '+r.files,()=>{$('simple-dialog').close();showReport(r.id)}));simple(t('迁移报告'),body)})}
+
+/* Adjustable file panes and task tray; no task or account state is modified. */
+(() => {
+  'use strict';
+  const frame = document.querySelector('.window');
+  const workspace = document.querySelector('.workspace');
+  const queue = document.querySelector('.queue');
+  if (!frame || !workspace || !queue) return;
+  const storageKey = 'wemove.layout.v1';
+  let state = { left: 0.5, queue: 0.3 };
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey));
+    for (const key of ['left', 'queue']) if (Number.isFinite(saved?.[key])) state[key] = saved[key];
+  } catch {}
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const makeHandle = (parent, axis, label) => {
+    const handle = document.createElement('div');
+    handle.className = `layout-handle ${axis}`;
+    handle.tabIndex = 0;
+    handle.setAttribute('role', 'separator');
+    handle.setAttribute('aria-orientation', axis === 'vertical' ? 'vertical' : 'horizontal');
+    handle.setAttribute('aria-label', label);
+    handle.title = label + ' · 双击恢复 / Double-click to reset';
+    parent.appendChild(handle);
+    return handle;
+  };
+  const vertical = makeHandle(workspace, 'vertical', '调整左右栏宽度 / Resize file panes');
+  const horizontal = makeHandle(queue, 'horizontal', '调整队列高度 / Resize transfer queue');
+  function apply() {
+    const width = workspace.clientWidth - 10;
+    const minimum = Math.min(280, width * 0.4);
+    state.left = clamp(state.left, minimum / Math.max(1, width), 1 - minimum / Math.max(1, width));
+    workspace.style.gridTemplateColumns = `minmax(0, ${state.left}fr) 10px minmax(0, ${1 - state.left}fr)`;
+    const header = frame.querySelector('.app-header').getBoundingClientRect().height;
+    const footer = frame.querySelector('.statusbar').getBoundingClientRect().height;
+    const available = frame.clientHeight - header - footer;
+    const height = clamp(available * state.queue, 140, Math.max(140, available - 240));
+    frame.style.gridTemplateRows = `${header}px minmax(0, 1fr) ${height}px ${footer}px`;
+    vertical.setAttribute('aria-valuemin', '0');
+    vertical.setAttribute('aria-valuemax', '100');
+    vertical.setAttribute('aria-valuenow', String(Math.round(state.left * 100)));
+    horizontal.setAttribute('aria-valuemin', '140');
+    horizontal.setAttribute('aria-valuemax', String(Math.round(Math.max(140, available - 240))));
+    horizontal.setAttribute('aria-valuenow', String(Math.round(height)));
+  }
+  function persist() { try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch {} }
+  function wire(handle, key) {
+    let activePointer = null;
+    handle.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return;
+      activePointer = event.pointerId;
+      handle.setPointerCapture(activePointer);
+      handle.focus();
+      event.preventDefault();
+      document.body.classList.add('layout-dragging');
+    });
+    handle.addEventListener('pointermove', event => {
+      if (activePointer !== event.pointerId) return;
+      if (key === 'left') {
+        const rect = workspace.getBoundingClientRect();
+        state.left = (event.clientX - rect.left - 5) / (rect.width - 10);
+      } else {
+        const rect = frame.getBoundingClientRect();
+        const footer = frame.querySelector('.statusbar').getBoundingClientRect().height;
+        const header = frame.querySelector('.app-header').getBoundingClientRect().height;
+        state.queue = (rect.bottom - footer - event.clientY) / (frame.clientHeight - header - footer);
+      }
+      apply();
+    });
+    const finish = () => { activePointer = null; document.body.classList.remove('layout-dragging'); persist(); };
+    handle.addEventListener('pointerup', finish);
+    handle.addEventListener('pointercancel', finish);
+    handle.addEventListener('lostpointercapture', finish);
+    handle.addEventListener('dblclick', () => { state[key] = key === 'left' ? 0.5 : 0.3; apply(); persist(); });
+    handle.addEventListener('keydown', event => {
+      const keys = key === 'left' ? ['ArrowLeft', 'ArrowRight'] : ['ArrowDown', 'ArrowUp'];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+      state[key] += (event.key === keys[0] ? -1 : 1) * (event.shiftKey ? 0.1 : 0.02);
+      apply(); persist();
+    });
+  }
+  wire(vertical, 'left'); wire(horizontal, 'queue');
+  new ResizeObserver(apply).observe(frame);
+  apply();
+})();
