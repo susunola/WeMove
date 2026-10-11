@@ -74,7 +74,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationWillTerminate(_ notification: Notification) {
     languageTimer?.invalidate()
+    // Best-effort: signal node process to pause cleanly before terminate
+    process?.interrupt()
+    Thread.sleep(forTimeInterval: 0.5)
     process?.terminate()
+  }
+
+  func notifyCompletion() {
+    // Placeholder: in full build use UNUserNotificationCenter or NSUserNotification
+    // for task completion alerts while running as accessory
   }
 }
 
