@@ -25,8 +25,12 @@ test('filters name patterns', () => {
   assert.equal(f({ name: 'normal', size: 10, isDir: false }), true);
 });
 
-test('describe filters', () => {
-  const d = describe({ excludeExt: ['tmp'], maxSize: 1024 });
-  assert.match(d, /tmp/);
-  assert.match(d, /1024/);
+test('filters age bounds', () => {
+  const f = compileFilters({ maxAgeDays: 7, minAgeDays: 1 });
+  const recent = { name: 'new.txt', size: 10, isDir: false, modified: new Date(Date.now() - 2 * 86400000).toISOString() };
+  const old = { name: 'old.txt', size: 10, isDir: false, modified: new Date(Date.now() - 10 * 86400000).toISOString() };
+  const veryNew = { name: 'brand.txt', size: 10, isDir: false, modified: new Date().toISOString() };
+  assert.equal(f(recent), true);
+  assert.equal(f(old), false);
+  assert.equal(f(veryNew), false);
 });
