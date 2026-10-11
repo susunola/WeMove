@@ -52,3 +52,25 @@ test('pause during retry backoff drains scheduler and preserves resumable work',
  assert.equal(f.q.scheduler().activeFiles,0);f.q.pause(id);assert.equal((await wait(f.q,id)).status,'paused');assert.equal(f.q.scheduler().waitingFiles,0);assert.equal(f.q.jobs.find(j=>j.id===id).files[0].done,false);
  }finally{f.cleanup()}
 });
+
+test('acknowledged upload waits for remote visibility without uploading twice',async()=>{
+ const f=fixture();let uploads=0,hidden=0;try{const get=f.providers.get,find=f.providers.find;
+ f.providers.get=r=>({...get(r),upload:async(...a)=>{uploads++;hidden=4;await get(r).upload(...a)}});
+ f.providers.find=async(r,n,o)=>{if(r.provider==='quark'&&uploads&&hidden-->0)return undefined;return find(r,n,o)};
+ fs.writeFileSync(path.join(f.roots.ali,'a'),'abc');const id=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:['a']});const j=await wait(f.q,id);assert.equal(j.status,'complete',j.message);assert.equal(uploads,1);assert.equal(j.done,1);assert(j.retryCount>=1);assert.equal(f.q.jobs.find(j=>j.id===id).files[0].destination.provider,'quark');
+ }finally{f.cleanup()}
+});
+
+test('source changed during upload is never reported as successfully completed',async()=>{
+ const f=fixture();try{const get=f.providers.get;f.providers.get=r=>({...get(r),upload:async(...a)=>{await get(r).upload(...a);fs.writeFileSync(path.join(f.roots.ali,'a'),'changed')}});
+ fs.writeFileSync(path.join(f.roots.ali,'a'),'abc');const id=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:['a']});const j=await wait(f.q,id);assert.equal(j.status,'failed');assert.equal(j.done,0);assert.equal(j.failure.kind,'source_changed');assert.equal(fs.readFileSync(path.join(f.roots.quark,'a'),'utf8'),'abc');assert(f.q.cacheInfo().used>0);
+ }finally{f.cleanup()}
+});
+
+test('source mutation during receipt readback cannot turn an interrupted upload into success',async()=>{
+ const f=fixture();try{const find=f.providers.find,get=f.providers.get;let first=true;
+ f.providers.find=async(r,n,o)=>{const e=await find(r,n,o);return e&&r.provider==='quark'?{...e,hash:'',hashType:''}:e};
+ f.providers.get=r=>({...get(r),upload:async(...a)=>{await get(r).upload(...a);if(first){first=false;throw Error('ECONNRESET network interrupted')}},download:async(ref,file,o)=>{await get(r).download(ref,file,o);if(ref.provider==='quark')fs.writeFileSync(path.join(f.roots.ali,'a'),'changed')}});
+ fs.writeFileSync(path.join(f.roots.ali,'a'),'abc');const id=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:['a']});const j=await wait(f.q,id);assert.equal(j.status,'failed');assert.equal(j.done,0);assert.equal(j.failure.kind,'source_changed');assert(f.q.cacheInfo().used>0);
+ }finally{f.cleanup()}
+});

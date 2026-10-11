@@ -21,3 +21,9 @@ Validation: 110 automated tests pass, including healthy-job scheduling during an
 Unrelated files can be moved to recovery during transfers. Active and queued tasks protect their selected source/target paths, descendants, ancestors, and renamed destinations. Provider, account and explicit drive identities are respected; an unresolved drive is treated conservatively. Authorization and plan scans still block deletion. Rejected deletion displays its reason inside the confirmation dialog. Queued work is awakened after deletion finishes. Recovery uses the selected account.
 
 112 automated tests passed; additional focused coverage checks unresolved drive protection and deletion failure feedback in the UI. Real transfers were left running, so core changes take effect on the next app restart.
+
+## Upload receipt and source stability
+
+An acknowledged upload that is temporarily absent from a fresh destination listing remains in the verification/retry path, rather than uploading again. Missing visibility is retryable; a visible size or hash mismatch remains an integrity failure. Verification waits are abortable. Both ordinary uploads and recovered receipts revalidate source identity before marking completion. Recovered receipts retain their destination reference and update aggregate progress immediately.
+
+Validation: the full suite passed 114 tests, followed by an additional passing regression for a source mutation during receipt readback (115 tests total). Added cases prove one upload despite delayed listing visibility and protect changed sources during uploads and readback recovery. Real cloud throughput remains unmeasured by these fixture tests.
