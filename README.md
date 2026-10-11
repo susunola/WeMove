@@ -1,12 +1,24 @@
 # WeMove
 
-面向 macOS 的网盘搬运工具，当前版本 0.8.0。现有应用名称为「网盘搬运助手」。
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-支持阿里云盘、夸克网盘、OneDrive、坚果云、百度网盘和 S3 兼容存储之间复制。提供双栏目录浏览、拖拽上传、目录对比、任务暂停与恢复、自动重试、定时增量方案、恢复中心，以及中文和英文界面。
+A local, dual-pane cloud transfer tool for macOS. Current version: **0.8.0**. The macOS application is currently named **网盘搬运助手**.
 
-## 开发运行
+Copy files between **Aliyun Drive, Quark Drive, OneDrive, Nutstore, Baidu Netdisk, and S3-compatible storage** from one workspace.
 
-需要 Node.js 22.13 或更新版本。根据 [构建说明](构建说明.md) 准备第三方客户端和桥接程序，放入 `vendor/`，然后运行：
+## Features
+
+- Browse two cloud folders side by side; copy in either direction and upload local files by dragging them into a pane.
+- Compare directories, preview a transfer, and copy missing or updated files.
+- Run multiple tasks with configurable file concurrency, per-account limits, automatic retries, and adaptive throttling.
+- Pause and resume tasks. SQLite checkpoints preserve task state; supported providers can resume downloads or upload sessions.
+- Connect multiple accounts and S3 buckets. Persisted credentials are encrypted with a key stored in macOS Keychain.
+- Move items into the application's recovery folder, restore them, and export transfer verification reports.
+- Switch between Chinese and English. Incremental plans can run manually or on a schedule while the application is running.
+
+## Development
+
+Requires **Node.js 22.13 or newer**. Follow the [build instructions (Chinese)](构建说明.md) to prepare third-party clients and bridges in `vendor/`, then run:
 
 ```sh
 npm ci --omit=dev
@@ -14,20 +26,29 @@ npm start
 npm test
 ```
 
-仓库包含界面、Node 服务、Swift 启动器、Go 桥接源码、测试和 Quark 脚本；不包含预编译客户端、Node 二进制和 `.app` 安装包。部分集成测试需要对应的 `vendor` 二进制。
+The repository includes the web interface, Node.js service, Swift launcher, Go bridge sources, tests, and Quark scripts. Prebuilt clients, the Node.js binary, and packaged `.app` bundles are not included. Some integration tests require the corresponding vendor binaries.
 
-默认运行数据目录为 `~/Library/Application Support/PanMover`。开发时可通过 `PANMOVER_DATA_DIR` 指向独立目录，避免干扰日常任务。
+Runtime data defaults to `~/Library/Application Support/PanMover`. Set `PANMOVER_DATA_DIR` to a separate directory for development so you do not modify everyday tasks.
 
-## 当前限制
+## Transfer behavior and limitations
 
-传输经本机中转，Mac 和应用需要保持运行。不同服务的续传能力不同；S3 大文件和 OneDrive 保存上传会话；会话失效时当前文件可能重传。当前 macOS 应用使用临时签名，正式发行尚需 Developer ID 签名和公证。
+Most cross-cloud transfers download through your Mac before uploading. Keep the Mac and application running. Eligible transfers within the same provider and account can use server-side copy; this is not universal cross-cloud instant transfer.
 
-## 文档与第三方组件
+Resume support varies by provider. Large S3 uploads and OneDrive uploads persist upload sessions; an expired session may require restarting the current file. Interrupted S3 multipart uploads can remain on the storage service; use bucket lifecycle rules or the provider console to clean them up when needed.
 
-- [使用说明](使用说明.md)
-- [0.8.0 增强功能](增强功能使用说明-v0.8.0.md)
-- [构建说明](构建说明.md)
+Verification reports distinguish hash verification, read-back verification, metadata checks, and unverified results. Provider compatibility and throughput depend on the service, account limits, and network; automated tests do not certify every real storage endpoint.
 
-第三方组件的许可证随仓库保留，参见各 `*-LICENSE` 文件。仓库暂未为自有代码指定开源许可证。
+The current macOS application uses ad-hoc signing. A formal distribution still needs Developer ID signing and notarization.
 
-请勿提交账号配置、Cookie、访问密钥、任务记录或用户文件。
+## Documentation
+
+- [User guide (Chinese)](使用说明.md)
+- [Version 0.8.0 enhancements (Chinese)](增强功能使用说明-v0.8.0.md)
+- [Build instructions (Chinese)](构建说明.md)
+- [Three interactive UI design concepts](designs/wemove-ui-concepts.html) — design exploration, not the released interface
+
+## Licenses and private data
+
+Third-party license files are retained in the repository; see the `*-LICENSE` files. No open-source license has been selected for WeMove's own code yet.
+
+Do not commit account configurations, cookies, access keys, task records, or user files.
