@@ -23,6 +23,7 @@ const server=http.createServer(async(req,res)=>{let u;try{u=new URL(req.url,'htt
  case '/copy':if(b.source?.provider==='local')throw Error('Use local upload endpoint');if(deletion.status==='running')throw Error('请等待删除完成');if(auth.busy())throw Error('请先完成当前授权');result={id:await queue.enqueue({...b,planId:''})};break;
  case '/settings':if(auth.busy()||deletion.status==='running')throw Error('请先完成授权或删除');result=queue.configure(b);break;
  case '/cancel':queue.cancel(b.id);break;
+ case '/skip-source-conflicts':if(auth.busy()||deletion.status==='running')throw Error('请等待授权或删除完成');queue.skipSourceConflicts(b.id);break;
  case '/retry-failed':if(auth.busy()||deletion.status==='running')throw Error('请等待授权或删除完成');queue.retryFailed(b.id);break;
  case '/reorder':if(!['up','down'].includes(b.direction))throw Error('方向无效');queue.reorder(b.id,b.direction);break;
  case '/cache-info':result=queue.cacheInfo();break;
