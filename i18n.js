@@ -1,5 +1,6 @@
 (function(root){'use strict';
 const english={
+"腾讯微云":"Tencent Weiyun","115 网盘":"115 Drive","通过 OpenList / WebDAV 网关连接。先在网关挂载此网盘，再填写该挂载目录的 WebDAV 地址。读写能力取决于网关驱动和账号权限。":"Connect through an OpenList / WebDAV gateway. Mount this drive in the gateway first, then enter its mounted WebDAV folder URL. Read/write support depends on the gateway driver and account permissions.","WebDAV 地址":"WebDAV URL","网关用户名":"Gateway username","网关密码":"Gateway password","查看接入说明":"Connection guide","使用 Apple ID 和双重认证连接 iCloud Drive。请使用账号密码，应用专用密码不适用。当前不包含 iCloud 照片。":"Connect iCloud Drive with your Apple ID password and two-factor authentication. App-specific passwords are not supported. iCloud Photos is not included.","Apple ID 密码":"Apple ID password","请填写有效的账号和密码":"Enter a valid username and password","请填写 Apple ID 邮箱":"Enter your Apple ID email","请填写有效的 WebDAV 地址":"Enter a valid WebDAV URL","WebDAV 地址须使用 HTTPS 或本机 HTTP 地址":"Use HTTPS, or HTTP on localhost, for the WebDAV URL","请完成 Apple ID 验证。":"Complete Apple ID verification.",
 "所选项目正在被传输任务使用，请先暂停相关任务再删除":"Selected items are in use by a transfer. Pause the related task before deleting.",
 "请先完成授权或目录扫描，再删除项目":"Finish authorization or the plan scan before deleting.",
 "WeMove · 网盘搬运助手":"WeMove · Cloud Transfer",

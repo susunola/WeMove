@@ -191,3 +191,6 @@ body,html[lang="zh-CN"] body{-webkit-font-smoothing:auto}
 .file-table th,.queue-columns,.pane-footer,#queue-summary,.progress-percent{color:#6e7e95}
 .pane-head>button:not(.icon-button),.pane-head .connection,.crumbs button{color:#687b96}
 .context button{font-weight:500}html[lang="en"] button,html[lang="en"] input,html[lang="en"] select,html[lang="en"] .file-name{font-weight:500}
+
+/* Keep all providers accessible at compact window heights. */
+#accounts{min-height:0;overflow-y:auto;flex:1;scrollbar-width:thin}.sidebar-bottom{flex-shrink:0}.sidebar-note{flex-shrink:0}

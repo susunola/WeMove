@@ -4,7 +4,9 @@
 
 A local, dual-pane cloud transfer tool for macOS. Current version: **0.8.0**. The macOS application is currently named **网盘搬运助手**.
 
-Copy files between **Aliyun Drive, Quark Drive, OneDrive, Nutstore, Baidu Netdisk, and S3-compatible storage** from one workspace.
+Copy files between **Aliyun Drive, Quark Drive, OneDrive, Nutstore, Baidu Netdisk, iCloud Drive, Tencent Weiyun, 115 Drive, and S3-compatible storage** from one workspace.
+
+Weiyun and 115 connect through an OpenList/WebDAV gateway; iCloud uses Apple ID and two-factor authentication. See [connection requirements and limitations](docs/extended-providers.md).
 
 ## Screenshots
 

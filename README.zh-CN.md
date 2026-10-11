@@ -4,7 +4,9 @@
 
 面向 macOS 的本地双栏网盘搬运工具，当前版本 **0.8.0**。macOS 应用目前名为 **网盘搬运助手**。
 
-在一个工作台中复制 **阿里云盘、夸克网盘、OneDrive、坚果云、百度网盘与 S3 兼容存储**之间的文件。
+在一个工作台中复制 **阿里云盘、夸克网盘、OneDrive、坚果云、百度网盘、iCloud Drive、腾讯微云、115 网盘与 S3 兼容存储**之间的文件。
+
+微云和 115 通过 OpenList/WebDAV 网关接入；iCloud 使用 Apple ID 与双重认证。详见[连接条件与限制](docs/extended-providers.md)。
 
 ## 界面截图
 
