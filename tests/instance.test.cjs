@@ -1,0 +1,2 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('fs'),path=require('path'),os=require('os');const {acquireInstance}=require('../lib/instance.cjs');
+test('单实例锁阻止重复服务，释放后可重新启动',async()=>{const dir=fs.mkdtempSync(path.join(os.tmpdir(),'pan-lock-'));let release;try{release=await acquireInstance(dir);await assert.rejects(acquireInstance(dir,0),/已经运行/);release();release=await acquireInstance(dir);assert(fs.existsSync(path.join(dir,'server.lock')))}finally{release?.();fs.rmSync(dir,{recursive:true,force:true})}});

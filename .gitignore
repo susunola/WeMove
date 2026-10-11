@@ -1,0 +1,23 @@
+# Local credentials and runtime state
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+rclone.conf
+*config.json
+session-url.txt
+data/
+cache*/
+jobs*/
+recovery/
+*.app/
+*.zip
+*.dmg
+vendor/rclone
+vendor/aliyunpan
+vendor/BaiduPCS-Go
+vendor/ali-bridge
+vendor/baidu-bridge
