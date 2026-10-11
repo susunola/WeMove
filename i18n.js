@@ -1,5 +1,7 @@
 (function(root){'use strict';
 const english={
+"所选项目正在被传输任务使用，请先暂停相关任务再删除":"Selected items are in use by a transfer. Pause the related task before deleting.",
+"请先完成授权或目录扫描，再删除项目":"Finish authorization or the plan scan before deleting.",
 "WeMove · 网盘搬运助手":"WeMove · Cloud Transfer",
 "打开文件夹":"Open folder","复制到目标目录":"Copy to destination","复制到源目录":"Copy to source","复制所选项目":"Copy selected items","复制名称":"Copy names","复制路径":"Copy paths","粘贴到当前目录":"Paste into this folder","全选当前目录":"Select all in this folder","取消选择":"Clear selection","复制当前目录路径":"Copy current folder path","已复制到剪贴板":"Copied to clipboard","复制文本":"Copy text",
 "来源":"Source","目标":"Target",
