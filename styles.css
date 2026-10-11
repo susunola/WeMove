@@ -220,3 +220,13 @@ body,html[lang="zh-CN"] body{-webkit-font-smoothing:auto}
 .sidebar-bottom button .icon{width:18px;height:18px;color:#929fb4;flex-shrink:0}
 .sidebar-bottom button:hover{background:#2d323b;color:#f2f4f8}
 .sidebar-bottom button:focus-visible{outline:2px solid #91a8cc;outline-offset:-2px}
+/* Only accounts scroll; keep add-storage and utilities outside that viewport. */
+.sidebar{overflow:hidden;gap:0}
+.sidebar-heading{flex-shrink:0}
+.sidebar #accounts{flex:1 1 0;min-height:0;overflow-x:hidden;overflow-y:auto;padding-bottom:8px;scrollbar-color:#596271 #202329;scrollbar-gutter:stable}
+.sidebar #accounts::-webkit-scrollbar{width:6px;background:#202329}
+.sidebar #accounts::-webkit-scrollbar-thumb{background:#596271;border:1px solid #202329;border-radius:8px}
+.sidebar .add-storage{margin:12px 0 14px;min-height:36px;flex:0 0 auto}
+.sidebar .sidebar-note{display:none}
+.sidebar .sidebar-bottom{margin-top:0;flex:0 0 auto}
+@media(max-height:850px){.sidebar{padding-top:16px;padding-bottom:12px}.sidebar-heading{margin-bottom:12px}.sidebar-bottom{gap:2px;padding-top:10px}.sidebar-bottom button{min-height:32px;padding-block:6px}.sidebar .add-storage{margin-block:10px;min-height:32px}}
