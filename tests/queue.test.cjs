@@ -32,3 +32,23 @@ test('只重试失败文件，不重新执行完成项目',async()=>{const f=fix
 test('限流后稳定完成会逐步恢复并发上限',async()=>{const f=fixture();let once=false;try{const get=f.providers.get;f.providers.get=r=>({...get(r),download:async(...args)=>{if(!once){once=true;throw Error('429 rate limit')}await new Promise(x=>setTimeout(x,950));await get(r).download(...args)}});for(let i=0;i<7;i++)fs.writeFileSync(path.join(f.roots.ali,String(i)),'abc');const id=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:Array.from({length:7},(_,i)=>String(i))});const j=await wait(f.q,id);assert.equal(j.status,'complete',j.message);assert(j.effectiveConcurrency>1);assert(j.effectiveConcurrency<=3)}finally{f.cleanup()}});
 test('一键清除只移除完成任务，暂停和取消记录及缓存保留',()=>{const f=fixture();try{for(const [id,status]of [['aaaaaaaaaaaaaaaa','complete'],['bbbbbbbbbbbbbbbb','paused'],['cccccccccccccccc','canceled']]){f.q.jobs.push({id,status,names:['a'],files:[],createdAt:Date.now(),source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'}});fs.mkdirSync(path.join(f.q.cache,id));fs.writeFileSync(path.join(f.q.cache,id,'cache'),'keep')}f.q.clearCompleted();assert.deepEqual(f.q.jobs.map(j=>j.status),['paused','canceled']);assert(!fs.existsSync(path.join(f.q.cache,'aaaaaaaaaaaaaaaa')));assert(fs.existsSync(path.join(f.q.cache,'bbbbbbbbbbbbbbbb/cache')));assert(fs.existsSync(path.join(f.q.cache,'cccccccccccccccc/cache')))}finally{f.cleanup()}});
 test('全部开始只启动暂停和失败任务，完成及取消保持原状',async()=>{const f=fixture();try{for(const [id,status]of [['1111111111111111','paused'],['2222222222222222','failed'],['3333333333333333','complete'],['4444444444444444','canceled']])f.q.jobs.push({id,status,planned:true,names:['a'],files:[],dirs:[],createdAt:Date.now(),source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'}});assert.equal(f.q.resumeAll(),2);assert.deepEqual(f.q.jobs.map(j=>j.status),['queued','queued','complete','canceled']);f.q.pauseAll()}finally{f.cleanup()}});
+
+test('retry backoff releases global slots so a healthy job finishes before retry',async()=>{
+ const f=fixture();let attempts=0;const events=[];
+ try{f.q.configure({concurrency:1,jobConcurrency:2,autoRecover:false});const get=f.providers.get;
+  f.providers.get=r=>({...get(r),download:async(ref,file,o)=>{if(ref.path==='/slow'){events.push('slow');if(++attempts===1)throw Error('ECONNRESET network interrupted')}else events.push('healthy');return get(r).download(ref,file,o)}});
+  fs.writeFileSync(path.join(f.roots.ali,'slow'),'abc');fs.writeFileSync(path.join(f.roots.ali,'healthy'),'xyz');
+  const slow=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:['slow']});
+  const healthy=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'onedrive',path:'/'},names:['healthy']});
+  assert.equal((await wait(f.q,healthy)).status,'complete');assert.equal((await wait(f.q,slow)).status,'complete');
+  assert.deepEqual(events,['slow','healthy','slow']);assert.equal(f.q.scheduler().activeFiles,0);
+ }finally{f.cleanup()}
+});
+
+test('pause during retry backoff drains scheduler and preserves resumable work',async()=>{
+ const f=fixture();try{const get=f.providers.get;f.providers.get=r=>({...get(r),download:async()=>{throw Error('ECONNRESET network interrupted')}});fs.writeFileSync(path.join(f.roots.ali,'a'),'abc');
+ const id=await f.q.enqueue({source:{provider:'ali',path:'/'},target:{provider:'quark',path:'/'},names:['a']});
+ for(let i=0;i<100&&!f.q.jobs.find(j=>j.id===id)?.files.some(x=>x.phase==='retrying');i++)await new Promise(r=>setTimeout(r,5));
+ assert.equal(f.q.scheduler().activeFiles,0);f.q.pause(id);assert.equal((await wait(f.q,id)).status,'paused');assert.equal(f.q.scheduler().waitingFiles,0);assert.equal(f.q.jobs.find(j=>j.id===id).files[0].done,false);
+ }finally{f.cleanup()}
+});
