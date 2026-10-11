@@ -1,6 +1,6 @@
 'use strict';
 const key=new URLSearchParams(location.search).get('key');const labels={local:t('本机文件'),ali:t('阿里云盘'),quark:t('夸克网盘'),onedrive:'OneDrive',nutcloud:t('坚果云'),baidu:t('百度网盘'),s3:t('S3 对象存储')};const $=id=>document.getElementById(id);const icons='/icons.svg?key='+key;let focused='left',clipboard=null,lastState=null,authProvider=null,authAccount=null,toastTimer,lastOption='',busyAction=false;
-const FILE_ROW_HEIGHT=47;const directoryCache=new Map();let comparisonVisible=false;let comparison=null,comparisonIndex=new Map();
+const FILE_ROW_HEIGHT=38;const directoryCache=new Map();let comparisonVisible=false;let comparison=null,comparisonIndex=new Map();
 function clearComparison(){if(comparison){comparison=null;comparisonIndex.clear();updateComparisonStrip();for(const side of ['left','right'])renderList(side)}}
 const panes={left:{provider:'ali',ref:{provider:'ali',path:'/',drive:''},trail:[],entries:[],selected:new Set(),loading:false,ready:false,error:'',filter:'',drives:[],anchor:0,version:0},right:{provider:'quark',ref:{provider:'quark',path:'/',id:'0'},trail:[],entries:[],selected:new Set(),loading:false,ready:false,error:'',filter:'',drives:[],anchor:0,version:0}};
 try{const saved=JSON.parse(sessionStorage.getItem('panmover-language-view')||'null');sessionStorage.removeItem('panmover-language-view');if(saved){focused=saved.focused;for(const side of ['left','right']){Object.assign(panes[side],saved.panes[side]);panes[side].selected=new Set(saved.panes[side].selected||[]);panes[side].restoreSelection=true;if(panes[side].ready)directoryCache.set(directoryKey(panes[side].ref),{at:Date.now(),value:{items:panes[side].entries,ref:panes[side].ref,drives:panes[side].drives,drive:panes[side].ref.drive}})}}}catch{}
@@ -148,10 +148,14 @@ async function showReports(){return action(async()=>{const {reports}=await api('
   const workspace = document.querySelector('.workspace');
   const queue = document.querySelector('.queue');
   if (!frame || !workspace || !queue) return;
-  const storageKey = 'wemove.layout.v1';
-  let state = { left: 0.5, queue: 0.3 };
+  const storageKey = 'wemove.layout.v2';
+  let state = { left: 0.5, queue: 0.22 };
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
+    if (!saved) {
+      const legacy = JSON.parse(localStorage.getItem('wemove.layout.v1'));
+      if (Number.isFinite(legacy?.left)) state.left = legacy.left;
+    }
     for (const key of ['left', 'queue']) if (Number.isFinite(saved?.[key])) state[key] = saved[key];
   } catch {}
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -213,7 +217,7 @@ async function showReports(){return action(async()=>{const {reports}=await api('
     handle.addEventListener('pointerup', finish);
     handle.addEventListener('pointercancel', finish);
     handle.addEventListener('lostpointercapture', finish);
-    handle.addEventListener('dblclick', () => { state[key] = key === 'left' ? 0.5 : 0.3; apply(); persist(); });
+    handle.addEventListener('dblclick', () => { state[key] = key === 'left' ? 0.5 : 0.22; apply(); persist(); });
     handle.addEventListener('keydown', event => {
       const keys = key === 'left' ? ['ArrowLeft', 'ArrowRight'] : ['ArrowDown', 'ArrowUp'];
       if (!keys.includes(event.key)) return;

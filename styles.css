@@ -115,3 +115,6 @@ HTML[lang="en"] .pane-role{font-size:8px}HTML[lang="en"] .pane-head>button:not(.
 @media(max-width:1200px){HTML[lang="en"] .transfer-setting{gap:4px;font-size:9px}HTML[lang="en"] .queue>header button{font-size:9px;padding-inline:6px}HTML[lang="en"] .queue>header #history-clear{margin-right:0}}
 @media(max-width:850px){.app-logo{width:26px;height:26px}.app-symbol{width:26px;height:26px}}
 .job>.state{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Files take priority: compact chrome and a smaller default task tray. */
+.app-header{height:54px}.browser-area{padding:12px 12px 0;grid-template-rows:minmax(0,1fr) 28px}.pane-head{min-height:54px}.pane-head .provider-logo{width:27px;height:27px}.pathbar{min-height:31px;margin-top:0}.filterbar{min-height:29px;margin:4px 20px 10px;padding:4px 9px}.file-table th{height:29px}.file-table tbody tr:not(.virtual-spacer),.file-table tbody tr:not(.virtual-spacer)>td{height:38px}.pane-footer{min-height:24px}.queue{grid-template-rows:46px 28px minmax(0,1fr)}.job{min-height:58px}.queue>header button{height:28px;min-height:28px}.comparison-strip{font-size:10px}
+@media(max-width:850px){.browser-area{padding:8px 8px 0}.pane-head{min-height:50px}.filterbar{margin-inline:14px}}
