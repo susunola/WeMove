@@ -24,3 +24,11 @@ This release uses a persistent breadth-first scan cursor and a transfer pipeline
 Local installation uses an ad-hoc signature. Public macOS distribution still requires an Apple Developer ID Application identity, notarization credentials, signing and notarization of the final artifact. No such identity or notarization profile has been assumed. Unattended scheduling remains outside this work.
 
 本机安装签名与公开发行的 Developer ID 签名不是一回事。公开发布仍需对应 Apple 开发者证书和公证凭据；未虚构已完成公证。真实企业租户、断网、睡眠唤醒和限流行为需要长期实机验证。
+
+## Repeated forced-restart validation
+
+`node tools/soak-transfer.cjs 30` runs an isolated fixture: 80 files in eight folders per round, intermittent simulated timeouts, three SIGKILL interruptions at the upload-before-receipt boundary, then resume and byte-for-byte comparison. It rejects duplicate uploads rather than silently overwriting them. The fixture never uses user credentials or cloud accounts.
+
+On the bundled Node runtime, 30 rounds passed: 2,400 files and 90 forced process restarts. A further 10 rounds passed with the development runtime: 800 files and 30 restarts. See `designs/soak-results.json` and `designs/soak-results-node25.json` for elapsed times and per-round results. This is repeated controlled fault injection, not an hours-long real-cloud soak or physical sleep/wake certification.
+
+The validation also adds signed-download-link renewal on a first 401/403 response and verifies that canceling a paced transfer releases its bandwidth reservation.

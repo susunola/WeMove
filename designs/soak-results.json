@@ -1,0 +1,158 @@
+{
+  "kind": "isolated fault injection; not physical sleep or real network outage",
+  "node": "v22.23.3",
+  "rounds": 30,
+  "elapsedMs": 76451,
+  "results": [
+    {
+      "round": 1,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 2,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 3,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 4,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 5,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 6,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 7,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 8,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 9,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 10,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 11,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 12,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 13,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 14,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 15,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 16,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 17,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 18,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 19,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 20,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 21,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 22,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 23,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 24,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 25,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 26,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 27,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 28,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 29,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 30,
+      "files": 80,
+      "forcedRestarts": 3
+    }
+  ]
+}
