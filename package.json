@@ -1,6 +1,6 @@
 {
   "name": "wemove",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "description": "Local dual-pane cross-cloud copy utility for macOS with filters, mirror sync, and background support",
   "scripts": {
