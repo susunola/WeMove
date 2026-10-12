@@ -67,7 +67,7 @@ func main() {
 	case "download-url":
  result,err:=client.GetFileDownloadUrl(&aliyunpan.GetFileDownloadUrlParam{DriveId:drive,FileId:f.FileId,ExpireSec:14400})
  if err!=nil {fail(err)}
- json.NewEncoder(os.Stdout).Encode(map[string]interface{}{"url":result.Url,"size":f.FileSize})
+ json.NewEncoder(os.Stdout).Encode(map[string]interface{}{"url":result.Url,"expires":result.Expiration,"size":f.FileSize})
  case "stat":
 		json.NewEncoder(os.Stdout).Encode(map[string]interface{}{"item": item(f)})
 	case "list":

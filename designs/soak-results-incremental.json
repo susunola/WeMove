@@ -1,0 +1,58 @@
+{
+  "kind": "isolated fault injection; not physical sleep or real network outage",
+  "node": "v22.23.3",
+  "rounds": 10,
+  "elapsedMs": 28288,
+  "results": [
+    {
+      "round": 1,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 2,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 3,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 4,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 5,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 6,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 7,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 8,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 9,
+      "files": 80,
+      "forcedRestarts": 3
+    },
+    {
+      "round": 10,
+      "files": 80,
+      "forcedRestarts": 3
+    }
+  ]
+}

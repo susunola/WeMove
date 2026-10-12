@@ -1,0 +1,29 @@
+{
+  "scope": "Four 32 KiB random files in one temporary directory; real account with other transfers active. Not a general throughput guarantee.",
+  "results": [
+    {
+      "mode": "fresh-cli",
+      "uploadMs": 6965,
+      "size": 32768,
+      "hashMatch": true
+    },
+    {
+      "mode": "pooled",
+      "uploadMs": 1714,
+      "size": 32768,
+      "hashMatch": true
+    },
+    {
+      "mode": "fresh-cli",
+      "uploadMs": 6844,
+      "size": 32768,
+      "hashMatch": true
+    },
+    {
+      "mode": "pooled",
+      "uploadMs": 1316,
+      "size": 32768,
+      "hashMatch": true
+    }
+  ]
+}

@@ -32,3 +32,17 @@ Local installation uses an ad-hoc signature. Public macOS distribution still req
 On the bundled Node runtime, 30 rounds passed: 2,400 files and 90 forced process restarts. A further 10 rounds passed with the development runtime: 800 files and 30 restarts. See `designs/soak-results.json` and `designs/soak-results-node25.json` for elapsed times and per-round results. This is repeated controlled fault injection, not an hours-long real-cloud soak or physical sleep/wake certification.
 
 The validation also adds signed-download-link renewal on a first 401/403 response and verifies that canceling a paced transfer releases its bandwidth reservation.
+
+## Small-file pipeline and incremental checkpoints
+
+Quark metadata commands and transfers up to 2 MiB reuse bounded Node workers and TCP connections. Each command gets a fresh VM context; workers recycle after 16 commands or excess RSS. Unsupported CLI layouts fall back before execution; failed uploads are never automatically replayed through a different client. Only the CLI's final telemetry flush is omitted. Login and larger transfers retain the original process path. Set `WEMOVE_DISABLE_QUARK_POOL=1` to disable reuse.
+
+A four-file real-account check with random 32 KiB payloads alternated original and reused clients: mean upload duration decreased from 6.90 s to 1.52 s. Every payload passed SHA-256 readback. This small sample measures fixed command overhead, not a general cloud speed guarantee; see `designs/quark-small-file-benchmark.json`.
+
+Signed download URLs use an in-memory per-file lease with concurrent refresh coalescing. Each HTTP range retries transient failures independently, leaving committed sibling ranges intact. Network idle deadlines exclude intentional throttling and disk writes. Small files get priority with reserved opportunities for older large files. Completion throughput and files per minute complement phase speed; command latency metrics represent client commands rather than underlying API request counts.
+
+SQLite stores directory, parent and pending scan records separately from job metadata. Completed file updates no longer rewrite the directory tree. Recovery inspection reconciles uncertain moves only after a fresh target match and confirmed source absence; lookup errors never prove absence.
+
+The updater now snapshots the task database before migration and restores it with the old application on startup failure. A manual downgrade also requires its matching database snapshot: the older application cannot safely read the new checkpoint schema.
+
+本轮针对小文件固定开销、分段重试、大小文件公平调度和增量检查点优化。真实小样本上传平均从 6.90 秒降至 1.52 秒，已逐项回读校验；不代表所有网盘或大文件都有同等提升。手动降级需要同时恢复对应数据库快照。
