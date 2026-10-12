@@ -115,8 +115,11 @@ const [cmd, ...args] = process.argv.slice(2);
         break;
       }
       case 'copy': {
-        const [srcP, srcPath, dstP, dstPath, ...patterns] = args;
+        let [srcP, srcPath, dstP, dstPath, ...patterns] = args;
         if (!srcP || !dstP || !patterns.length) throw Error('用法: wemove copy <srcProvider> <srcPath> <dstProvider> <dstPath> <name|pattern...>');
+        // Normalize paths
+        srcPath = srcPath.startsWith('/') ? srcPath : '/' + srcPath;
+        dstPath = dstPath.startsWith('/') ? dstPath : '/' + dstPath;
         let names = [];
         const hasWildcard = patterns.some(p => /[*?]/.test(p));
         if (hasWildcard) {
@@ -133,6 +136,7 @@ const [cmd, ...args] = process.argv.slice(2);
           const dirs = names.filter(n => items.find(e => e.name === n)?.isDir).length;
           console.log(`匹配到 ${names.length} 项（文件 ${names.length - dirs}，目录 ${dirs}）`);
         } else names = patterns;
+        console.log(`目标: ${dstP}:${dstPath}`);
         const r = await api('/copy', {
           source: { provider: srcP, path: srcPath },
           target: { provider: dstP, path: dstPath },
