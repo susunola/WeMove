@@ -57,13 +57,18 @@ func main() {
 	}
 	defer config.Config.Save()
 	client := u.PanClient().OpenapiPanClient()
-	f, e := client.FileInfoByPath(drive, os.Args[2])
+	var f *aliyunpan.FileEntity
+ if len(os.Args)>4 && os.Args[4]!="" { f,e=client.FileInfoById(drive,os.Args[4]) } else { f,e=client.FileInfoByPath(drive,os.Args[2]) }
 	if e != nil {
 		fail(e)
 	}
 	f.Path = os.Args[2]
 	switch os.Args[1] {
-	case "stat":
+	case "download-url":
+ result,err:=client.GetFileDownloadUrl(&aliyunpan.GetFileDownloadUrlParam{DriveId:drive,FileId:f.FileId,ExpireSec:14400})
+ if err!=nil {fail(err)}
+ json.NewEncoder(os.Stdout).Encode(map[string]interface{}{"url":result.Url,"size":f.FileSize})
+ case "stat":
 		json.NewEncoder(os.Stdout).Encode(map[string]interface{}{"item": item(f)})
 	case "list":
 		if !f.IsFolder() {

@@ -77,3 +77,5 @@ npm test
 [扩展存储连接说明](docs/extended-storage.md) — Google Drive · Dropbox · Box · pCloud · MEGA · Nextcloud · FTP/FTPS · SFTP · WebDAV · SMB.
 
 [企业共享盘](docs/enterprise-storage.md) — SharePoint · OneDrive for Business · Google Shared Drives.
+
+[Performance and reliability / 性能与可靠性](docs/performance-and-reliability.md)

@@ -1,0 +1,24 @@
+{
+  "scope": "Local state aggregation only; not a cloud throughput benchmark",
+  "node": "v25.8.1",
+  "results": [
+    {
+      "files": 1000,
+      "iterations": 100,
+      "incrementalMs": 0.13,
+      "fullScanMs": 1.4
+    },
+    {
+      "files": 10000,
+      "iterations": 100,
+      "incrementalMs": 0.05,
+      "fullScanMs": 10.73
+    },
+    {
+      "files": 100000,
+      "iterations": 100,
+      "incrementalMs": 0.07,
+      "fullScanMs": 104.8
+    }
+  ]
+}

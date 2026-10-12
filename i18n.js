@@ -1,5 +1,7 @@
 (function(root){'use strict';
 const english={
+"带宽上限（KB/s，0 表示不限）":"Bandwidth limit (KB/s, 0 = unlimited)","限速支持阿里下载、rclone 下载及上传、S3 分片、OneDrive 上传。夸克和部分专用客户端暂不支持限速。":"Rate limiting supports Ali downloads, rclone downloads/uploads, S3 multipart and OneDrive uploads. Quark and some dedicated clients do not yet support rate limiting.",
+"完成（有跳过）":"Completed with skips","部分失败":"Partially failed","导出未完成清单":"Export incomplete items","已发现 ":"Discovered ",
 "共享云盘":"Shared drives","企业版":"Business",
 "清理已结束":"Clear finished","已清理已完成和已取消任务；其他任务保留":"Completed and canceled tasks cleared; other tasks retained",
 "扫描未完成，文件数量尚未统计":"Scan incomplete; file counts are not available yet","源端重名项（整组跳过，不修改源文件）：":"Source duplicates (entire groups skipped; source files unchanged):","跳过源端重名项并继续":"Skip source duplicate groups and continue",
