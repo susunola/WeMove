@@ -129,8 +129,9 @@ const [cmd, ...args] = process.argv.slice(2);
             } else names.push(pat);
           }
           names = [...new Set(names)];
-          if (!names.length) throw Error('通配符未匹配到任何文件');
-          console.log('匹配到', names.length, '项');
+          if (!names.length) throw Error('通配符未匹配到任何项目');
+          const dirs = names.filter(n => items.find(e => e.name === n)?.isDir).length;
+          console.log(`匹配到 ${names.length} 项（文件 ${names.length - dirs}，目录 ${dirs}）`);
         } else names = patterns;
         const r = await api('/copy', {
           source: { provider: srcP, path: srcPath },
