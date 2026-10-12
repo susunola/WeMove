@@ -3,8 +3,12 @@
   "version": "0.9.1",
   "private": true,
   "description": "Local dual-pane cross-cloud copy utility for macOS with filters, mirror sync, and background support",
+  "bin": {
+    "we-move": "./cli.cjs"
+  },
   "scripts": {
     "start": "node server.cjs",
+    "cli": "node cli.cjs",
     "test": "node --test tests/*.test.cjs"
   },
   "engines": {
