@@ -13,14 +13,14 @@ function help() {
   console.log(`WeMove CLI 0.9.1
 
 Usage:
-  we-move version          Show version
-  we-move providers        List supported providers
-  we-move help             Show this help
+  wemove version          Show version
+  wemove providers        List supported providers
+  wemove help             Show this help
 
 Future:
-  we-move list <provider> <path>
-  we-move copy <src> <dst>
-  we-move sync <plan>
+  wemove list <provider> <path>
+  wemove copy <src> <dst>
+  wemove sync <plan>
 
 Note: Full transfer commands require authenticated sessions.
 Currently a foundation for scripting and automation.

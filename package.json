@@ -4,7 +4,7 @@
   "private": true,
   "description": "Local dual-pane cross-cloud copy utility for macOS with filters, mirror sync, and background support",
   "bin": {
-    "we-move": "./cli.cjs"
+    "wemove": "./cli.cjs"
   },
   "scripts": {
     "start": "node server.cjs",
