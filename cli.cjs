@@ -22,7 +22,7 @@ Usage:
 
 Examples:
   wemove list ali /
-  wemove copy ali /docs baidu /backup file1.txt file2.pdf
+  wemove copy ali /docs baidu /backup "*.pdf" "report*.docx"
 
 Requires a running WeMove desktop instance (session-url.txt).
 `);
@@ -115,8 +115,23 @@ const [cmd, ...args] = process.argv.slice(2);
         break;
       }
       case 'copy': {
-        const [srcP, srcPath, dstP, dstPath, ...names] = args;
-        if (!srcP || !dstP || !names.length) throw Error('用法: wemove copy <srcProvider> <srcPath> <dstProvider> <dstPath> <name...>');
+        const [srcP, srcPath, dstP, dstPath, ...patterns] = args;
+        if (!srcP || !dstP || !patterns.length) throw Error('用法: wemove copy <srcProvider> <srcPath> <dstProvider> <dstPath> <name|pattern...>');
+        let names = [];
+        const hasWildcard = patterns.some(p => /[*?]/.test(p));
+        if (hasWildcard) {
+          const listed = await api('/list', { ref: { provider: srcP, path: srcPath } });
+          const items = listed.items || [];
+          for (const pat of patterns) {
+            if (/[*?]/.test(pat)) {
+              const re = new RegExp('^' + pat.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$', 'i');
+              names.push(...items.filter(e => re.test(e.name)).map(e => e.name));
+            } else names.push(pat);
+          }
+          names = [...new Set(names)];
+          if (!names.length) throw Error('通配符未匹配到任何文件');
+          console.log('匹配到', names.length, '项');
+        } else names = patterns;
         const r = await api('/copy', {
           source: { provider: srcP, path: srcPath },
           target: { provider: dstP, path: dstPath },
