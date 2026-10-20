@@ -4,7 +4,7 @@ This is an incremental delivery against the performance/reliability plan, not a 
 
 Implemented:
 
-- Prepared CI matrix for Node 22/24 on Linux/macOS with pinned platform-specific rclone and checksum verification. GitHub rejected workflow publication because the current OAuth token lacks workflow scope; configuration is retained as docs/plans/ci-workflow-proposed.yml and is not active.
+- CI matrix for Node 22/24 on Linux/macOS with pinned platform-specific rclone and checksum verification. Workflow publication uses the newly authorized token; hosted results must be checked separately from local validation.
 - Three local transfer workloads, three rounds each, strict readback; comparable-baseline checker rejects >10% median duration regressions. Matching hardware/network remains an operator requirement. The initial baseline is not a demonstrated speedup.
 - Bounded Quark worker queues, cooldown after repeated process failures, queued-account fairness, execution-before-fallback protection using the verified CLI fingerprint.
 - Asynchronous coalesced cache scanning on a worker thread; expired results refreshed and symlinks ignored. Maintenance-only cache deletion retains its existing drained-transfer requirement.
