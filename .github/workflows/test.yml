@@ -4,6 +4,7 @@ permissions:
   contents: read
 jobs:
   tests:
+    timeout-minutes: 10
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
@@ -42,6 +43,7 @@ jobs:
       - run: npm test
       - run: python3 tests/test_upgrade_preflight.py
       - run: node tools/benchmark-core.cjs > benchmark-core.json
+      - run: node tools/benchmark-checkpoints.cjs benchmark-checkpoints.json
       - run: node tools/benchmark-transfer.cjs --output benchmark-transfer.json
       - uses: actions/upload-artifact@v4
         with:

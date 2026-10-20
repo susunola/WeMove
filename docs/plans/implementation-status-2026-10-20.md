@@ -30,3 +30,11 @@ Still pending:
 - Public Developer ID signing/notarization needs the owner's Apple credentials; local ad-hoc signatures are not public release signing.
 
 No unattended scheduling was added. Existing unrelated local design drafts are excluded from this delivery.
+
+## Follow-up validation
+
+- HTTP integration tests now use a private disposable app root and fixture keychain bridge, without depending on the host macOS keychain. Test child exit is observed from spawn time, including startup failure. Production keychain handling is unchanged.
+- GitHub Actions run 39391860733 passed all four macOS/Linux × Node 22/24 jobs, including tests, updater preflight and nine synthetic transfer benchmark rounds per job.
+- New checkpoint benchmark uses fresh processes for 1k/10k/100k files, three rounds per eager/lazy/active mode. At 100k files, observed median eager load 73.51 ms and 37.9 MiB heap increase; finished-task summary load 0.24 ms and under 0.1 MiB heap increase. Active jobs still hydrate files (70.9 ms median). These are this machine's local measurements, not universal guarantees.
+- Older finished tasks receive a summary on first read; subsequent launches can use lazy details.
+- Merge preview against remote main identifies seven conflicting files. No remote functionality has been overwritten; integration remains pending deliberate conflict resolution and retesting.

@@ -187,7 +187,7 @@
     },
     {
       "path": "lib/task-store.cjs",
-      "sha256": "0d03437ab8afef61783f9c15f2e56ef323fc63324d209cfe64a5e7d1f4a2c59c"
+      "sha256": "c031427cd270476ba3e5bf7423d2c5f203776be1561390a5f13aea4765b42f57"
     },
     {
       "path": "lib/transfer-limiter.cjs",

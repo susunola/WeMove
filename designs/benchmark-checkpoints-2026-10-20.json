@@ -1,0 +1,276 @@
+{
+  "scope": "Local SQLite checkpoint loading in fresh processes; active jobs still hydrate files",
+  "node": "v22.23.3",
+  "results": [
+    {
+      "mode": "eager",
+      "files": 1000,
+      "loadMs": 0.94,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 933888,
+      "lazy": false,
+      "detailReadMs": 0.02,
+      "round": 1
+    },
+    {
+      "mode": "eager",
+      "files": 1000,
+      "loadMs": 0.94,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 901120,
+      "lazy": false,
+      "detailReadMs": 0.02,
+      "round": 2
+    },
+    {
+      "mode": "eager",
+      "files": 1000,
+      "loadMs": 0.87,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 917504,
+      "lazy": false,
+      "detailReadMs": 0.02,
+      "round": 3
+    },
+    {
+      "mode": "lazy",
+      "files": 1000,
+      "loadMs": 0.2,
+      "heapDeltaBytes": 21136,
+      "rssDeltaBytes": 147456,
+      "lazy": true,
+      "detailReadMs": 0.74,
+      "round": 1
+    },
+    {
+      "mode": "lazy",
+      "files": 1000,
+      "loadMs": 0.22,
+      "heapDeltaBytes": 21136,
+      "rssDeltaBytes": 131072,
+      "lazy": true,
+      "detailReadMs": 0.71,
+      "round": 2
+    },
+    {
+      "mode": "lazy",
+      "files": 1000,
+      "loadMs": 0.2,
+      "heapDeltaBytes": 21136,
+      "rssDeltaBytes": 131072,
+      "lazy": true,
+      "detailReadMs": 0.72,
+      "round": 3
+    },
+    {
+      "mode": "active",
+      "files": 1000,
+      "loadMs": 1.05,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 917504,
+      "lazy": false,
+      "detailReadMs": 0.03,
+      "round": 1
+    },
+    {
+      "mode": "active",
+      "files": 1000,
+      "loadMs": 0.94,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 917504,
+      "lazy": false,
+      "detailReadMs": 0.03,
+      "round": 2
+    },
+    {
+      "mode": "active",
+      "files": 1000,
+      "loadMs": 0.89,
+      "heapDeltaBytes": 683208,
+      "rssDeltaBytes": 933888,
+      "lazy": false,
+      "detailReadMs": 0.03,
+      "round": 3
+    },
+    {
+      "mode": "eager",
+      "files": 10000,
+      "loadMs": 8.22,
+      "heapDeltaBytes": 4571448,
+      "rssDeltaBytes": 8798208,
+      "lazy": false,
+      "detailReadMs": 0.05,
+      "round": 1
+    },
+    {
+      "mode": "eager",
+      "files": 10000,
+      "loadMs": 8.2,
+      "heapDeltaBytes": 4580000,
+      "rssDeltaBytes": 8798208,
+      "lazy": false,
+      "detailReadMs": 0.05,
+      "round": 2
+    },
+    {
+      "mode": "eager",
+      "files": 10000,
+      "loadMs": 8.18,
+      "heapDeltaBytes": 4578208,
+      "rssDeltaBytes": 8798208,
+      "lazy": false,
+      "detailReadMs": 0.05,
+      "round": 3
+    },
+    {
+      "mode": "lazy",
+      "files": 10000,
+      "loadMs": 0.19,
+      "heapDeltaBytes": 21144,
+      "rssDeltaBytes": 114688,
+      "lazy": true,
+      "detailReadMs": 8.12,
+      "round": 1
+    },
+    {
+      "mode": "lazy",
+      "files": 10000,
+      "loadMs": 0.17,
+      "heapDeltaBytes": 21144,
+      "rssDeltaBytes": 131072,
+      "lazy": true,
+      "detailReadMs": 8.24,
+      "round": 2
+    },
+    {
+      "mode": "lazy",
+      "files": 10000,
+      "loadMs": 0.21,
+      "heapDeltaBytes": 21144,
+      "rssDeltaBytes": 114688,
+      "lazy": true,
+      "detailReadMs": 7.92,
+      "round": 3
+    },
+    {
+      "mode": "active",
+      "files": 10000,
+      "loadMs": 8.76,
+      "heapDeltaBytes": 4595224,
+      "rssDeltaBytes": 8929280,
+      "lazy": false,
+      "detailReadMs": 0.06,
+      "round": 1
+    },
+    {
+      "mode": "active",
+      "files": 10000,
+      "loadMs": 8.56,
+      "heapDeltaBytes": 4579912,
+      "rssDeltaBytes": 8929280,
+      "lazy": false,
+      "detailReadMs": 0.05,
+      "round": 2
+    },
+    {
+      "mode": "active",
+      "files": 10000,
+      "loadMs": 8.73,
+      "heapDeltaBytes": 4588344,
+      "rssDeltaBytes": 8896512,
+      "lazy": false,
+      "detailReadMs": 0.05,
+      "round": 3
+    },
+    {
+      "mode": "eager",
+      "files": 100000,
+      "loadMs": 70.81,
+      "heapDeltaBytes": 40947432,
+      "rssDeltaBytes": 73498624,
+      "lazy": false,
+      "detailReadMs": 0.07,
+      "round": 1
+    },
+    {
+      "mode": "eager",
+      "files": 100000,
+      "loadMs": 75.44,
+      "heapDeltaBytes": 39725320,
+      "rssDeltaBytes": 72712192,
+      "lazy": false,
+      "detailReadMs": 0.1,
+      "round": 2
+    },
+    {
+      "mode": "eager",
+      "files": 100000,
+      "loadMs": 73.51,
+      "heapDeltaBytes": 38319240,
+      "rssDeltaBytes": 74006528,
+      "lazy": false,
+      "detailReadMs": 0.08,
+      "round": 3
+    },
+    {
+      "mode": "lazy",
+      "files": 100000,
+      "loadMs": 0.22,
+      "heapDeltaBytes": 21152,
+      "rssDeltaBytes": 163840,
+      "lazy": true,
+      "detailReadMs": 73.34,
+      "round": 1
+    },
+    {
+      "mode": "lazy",
+      "files": 100000,
+      "loadMs": 0.24,
+      "heapDeltaBytes": 21152,
+      "rssDeltaBytes": 131072,
+      "lazy": true,
+      "detailReadMs": 73.68,
+      "round": 2
+    },
+    {
+      "mode": "lazy",
+      "files": 100000,
+      "loadMs": 0.27,
+      "heapDeltaBytes": 21152,
+      "rssDeltaBytes": 131072,
+      "lazy": true,
+      "detailReadMs": 72.06,
+      "round": 3
+    },
+    {
+      "mode": "active",
+      "files": 100000,
+      "loadMs": 70.84,
+      "heapDeltaBytes": 39692032,
+      "rssDeltaBytes": 72695808,
+      "lazy": false,
+      "detailReadMs": 0.07,
+      "round": 1
+    },
+    {
+      "mode": "active",
+      "files": 100000,
+      "loadMs": 70.9,
+      "heapDeltaBytes": 40904000,
+      "rssDeltaBytes": 73596928,
+      "lazy": false,
+      "detailReadMs": 0.08,
+      "round": 2
+    },
+    {
+      "mode": "active",
+      "files": 100000,
+      "loadMs": 76.56,
+      "heapDeltaBytes": 39698272,
+      "rssDeltaBytes": 72744960,
+      "lazy": false,
+      "detailReadMs": 0.07,
+      "round": 3
+    }
+  ]
+}
