@@ -1,5 +1,6 @@
 (function(root){'use strict';
 const english={
+"运行内存：":"Process memory: ","事件循环 P95：":"Event loop P95: ","导出脱敏诊断":"Export redacted diagnostics",
 "每分钟完成文件":"Files completed per minute","已验证吞吐":"Verified throughput","下载排队":"Download queue wait","上传排队":"Upload queue wait","首个文件完成：":"First file completed: "," 次调用":" calls","平均 ":"Average ","客户端命令耗时（不等同于底层接口请求数）：":"Client command latency (not underlying API request counts):",
 "带宽上限（KB/s，0 表示不限）":"Bandwidth limit (KB/s, 0 = unlimited)","限速支持阿里下载、rclone 下载及上传、S3 分片、OneDrive 上传。夸克和部分专用客户端暂不支持限速。":"Rate limiting supports Ali downloads, rclone downloads/uploads, S3 multipart and OneDrive uploads. Quark and some dedicated clients do not yet support rate limiting.",
 "完成（有跳过）":"Completed with skips","部分失败":"Partially failed","导出未完成清单":"Export incomplete items","已发现 ":"Discovered ",

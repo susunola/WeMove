@@ -1,0 +1,392 @@
+{
+  "version": "0.9.0",
+  "files": [
+    {
+      "path": "app.js",
+      "sha256": "f57d90d662bfa5bb1d39d33e506fb9cb981c333b8b1adb3ea2647b7555ba7e76"
+    },
+    {
+      "path": "i18n.js",
+      "sha256": "7cf23a3c3793697c2f654b56c19d997eaa02aa6bea4c05d50b27cc40e75bee65"
+    },
+    {
+      "path": "index.html",
+      "sha256": "2d0ccf8afb0fe8da7816c034a501ca8e83850ade14e4e177071eb5372e885fb7"
+    },
+    {
+      "path": "lib/accounts.cjs",
+      "sha256": "e65ecff493186d49e35d15ba14759ed39cb30014535c8a08cb25f201460d0e4c"
+    },
+    {
+      "path": "lib/auth.cjs",
+      "sha256": "931993758e309eb8f12b79aa0af5bb417f4efdb8b4100c216380e65cb2070a04"
+    },
+    {
+      "path": "lib/bandwidth.cjs",
+      "sha256": "a7dab579d8d8010da9a1e1799f22cb99523559fd4dbe394b38993864b8407943"
+    },
+    {
+      "path": "lib/cache-scan-worker.cjs",
+      "sha256": "b82a9cc437496b8d2009183d29c0c908be1f819af6bcf14d11e5071b8b69bee2"
+    },
+    {
+      "path": "lib/cache-scan.cjs",
+      "sha256": "c5bd69f634746070cd5e79f837b1fd33380293e1fbd011b6fe826d6407096367"
+    },
+    {
+      "path": "lib/cli-pool.cjs",
+      "sha256": "2ef0a57c73c8e433a890a66b9ceaac9a0bc939c9bb9f189c9eca9239fc088249"
+    },
+    {
+      "path": "lib/cli-worker.cjs",
+      "sha256": "90aa6518a7b9cd00b25574c34dd79565b2c9767fe3ce50bf8602eecdd4a07548"
+    },
+    {
+      "path": "lib/client-pool.cjs",
+      "sha256": "bb60bc5b0c8beb70e8686cc12197dcd0812a959b659130fae406075cbca0a453"
+    },
+    {
+      "path": "lib/common.cjs",
+      "sha256": "cdd1be802b8f62957a1d4a8aa8d615df85bd9f8e416f2b4471ff0f4ed61c6196"
+    },
+    {
+      "path": "lib/compare-tree.cjs",
+      "sha256": "3615f86520b46d73e867dcffc5736c85cd4b3c31e0deeca9d0ba6d3213de1ce1"
+    },
+    {
+      "path": "lib/credential-coordinator.cjs",
+      "sha256": "bb2cf851191fbd3ca59c2a6f470e4ac12818812417fb143545a54bc326019942"
+    },
+    {
+      "path": "lib/credential-vault.cjs",
+      "sha256": "28e66379c6318d08e2ab82d857c8a486fa06e7079d5cab5f44b5b9d6fc3df7bd"
+    },
+    {
+      "path": "lib/delete-guard.cjs",
+      "sha256": "258d52f9d6b0f20f52fc5ac41f4025d56cf0141c4becc4824e9cdfc675351b14"
+    },
+    {
+      "path": "lib/directory-index.cjs",
+      "sha256": "23d3bfa67e0cd5d09f4d98d95f59e8221698b155b39faa5408f08525ae3a9a08"
+    },
+    {
+      "path": "lib/download-url.cjs",
+      "sha256": "3277a8c201b0ad1d173f393ce5b8cfca2a6b567885012808290948d15efb9d7d"
+    },
+    {
+      "path": "lib/enterprise-storage.cjs",
+      "sha256": "ed266b587d5ee4b273f8961a147c9a05603f04b8057a03a5ef759eadd4e69fd9"
+    },
+    {
+      "path": "lib/extended-storage.cjs",
+      "sha256": "e3686efb812a364c7561ebf1b3926f44dc1757f6a1a89fedc418e41a8983a01d"
+    },
+    {
+      "path": "lib/failures.cjs",
+      "sha256": "36c0f867f9df986dca901d3805d5fbc50bebf3a193712ed3d3aad8452fa203cd"
+    },
+    {
+      "path": "lib/file-order.cjs",
+      "sha256": "1883b7388cb940cd41a4f154fcda3f325f5780f8837be1ad51ff01f125367dac"
+    },
+    {
+      "path": "lib/filters.cjs",
+      "sha256": "a3569cd75649299f2c55859d2d89c9c5b179cf34bf404f64c29b6b7777a44885"
+    },
+    {
+      "path": "lib/hash-service.cjs",
+      "sha256": "f8b5e9e2a009cf1bdd3bfad636b8c59db1d32b45a93d09b48fedece9d2b42de8"
+    },
+    {
+      "path": "lib/hash-worker.cjs",
+      "sha256": "c3140fd5437c8870b0cc93dad28327ecab58237594883068d5df302393be0e53"
+    },
+    {
+      "path": "lib/http-range-download.cjs",
+      "sha256": "a50ad4f95acd4741b4737b6639c659b36dc22d7a65a0220d58f078d8ab149737"
+    },
+    {
+      "path": "lib/instance.cjs",
+      "sha256": "a722c0eddcd3d478a7c921987ab5508db7f1fdebcd019da3ba279424966eb989"
+    },
+    {
+      "path": "lib/job-summary.cjs",
+      "sha256": "fb253f0219422b8a17310fa895af25bb0f18b5cd42e20462eddae53563a942f1"
+    },
+    {
+      "path": "lib/local-upload.cjs",
+      "sha256": "fb7a90d250c8407ad86bcb0702d400a71c17fda7346da99c23fc83d62a5a3c83"
+    },
+    {
+      "path": "lib/metadata-cache.cjs",
+      "sha256": "db404d253851bcd5898e08adefeb780ae5622d378cca9f6e133b4bba2f893518"
+    },
+    {
+      "path": "lib/migration.cjs",
+      "sha256": "8075b0320498d8e02f923b4e3ddb4e07b98213edb9a8d7c9a6ee7058203ea751"
+    },
+    {
+      "path": "lib/mount.cjs",
+      "sha256": "1ca08f4f1ebd81def51394aac6ec2f7eb7bb2170438d2ee85aa0950a355471d2"
+    },
+    {
+      "path": "lib/process-watchdog.cjs",
+      "sha256": "9558c2f092a4110bb653aa9bb130a19431f7b96b3c567e1eca20f2884b5010cf"
+    },
+    {
+      "path": "lib/provider-capabilities.cjs",
+      "sha256": "e162318311c113b98e9c7944191a39578a699e2c7db6ab017c58a02d20a8b1a6"
+    },
+    {
+      "path": "lib/providers.cjs",
+      "sha256": "8adc0125b1b1eb0278a34954f9eeadd74ab896383dcdbb8c53409aa795446e09"
+    },
+    {
+      "path": "lib/queue.cjs",
+      "sha256": "5376ddfc1cd8ff9b10bb16e52981b7163a98e747dda6583f96b13cd87530f629"
+    },
+    {
+      "path": "lib/range-download.cjs",
+      "sha256": "d46bd1668ca0cdd70265347f2e70cee680dae4f408bb1a68ddec61621592d889"
+    },
+    {
+      "path": "lib/recovery.cjs",
+      "sha256": "a04b746ad2f092dc3aaa7a58b27cda9eb173decb148b38cd8ab6178dfbe02916"
+    },
+    {
+      "path": "lib/remote-config.cjs",
+      "sha256": "d31af76c9c5b0bc9114c1448fdecb435a002fa84162d2b624cfb07bae3ac47cc"
+    },
+    {
+      "path": "lib/request-metrics.cjs",
+      "sha256": "cc8ecbc50e77ddefe81da626c42d4d77ab76203739c83b22f88f2e1e27fee691"
+    },
+    {
+      "path": "lib/resumable-upload.cjs",
+      "sha256": "74616e1bfb47a669dc7a41625be4ec447ff70060968d64178389ccf9105ddea1"
+    },
+    {
+      "path": "lib/runtime-health.cjs",
+      "sha256": "9d6a6a8efe092270f792361a5626bfdad6384a1021e09327c353cbe06b1b88f2"
+    },
+    {
+      "path": "lib/s3-config.cjs",
+      "sha256": "46ffacf65617feee26e8a6f4aaa3ade3b8730a39ed9f223d759ccf33fc8944c2"
+    },
+    {
+      "path": "lib/staging-budget.cjs",
+      "sha256": "ec6657eab5734239ce35888076316a476b8dfcd9644d3236d359be7b3bea19c9"
+    },
+    {
+      "path": "lib/stream-download.cjs",
+      "sha256": "10236f6eccad312c86dca7ba51a947fca18f163a65aab3a777750580132f1058"
+    },
+    {
+      "path": "lib/sync-plans.cjs",
+      "sha256": "bb95f18705cc2086bd33fd46786ddf824308205cd21b56e76e3160d9e40d3b3b"
+    },
+    {
+      "path": "lib/task-store.cjs",
+      "sha256": "0d03437ab8afef61783f9c15f2e56ef323fc63324d209cfe64a5e7d1f4a2c59c"
+    },
+    {
+      "path": "lib/transfer-limiter.cjs",
+      "sha256": "f82d1fb7cc86a63dddb3fdc125d02d8937a96e634ff8b4c2e19719920a765afc"
+    },
+    {
+      "path": "lib/transfer-tuning.cjs",
+      "sha256": "ed248890e20aec5a4686222e78d3406c3d772d32dbcf70d6662773b84518b896"
+    },
+    {
+      "path": "lib/trash.cjs",
+      "sha256": "eb4775c38135c61cd97a25a4f9876ed1fbbbfb0dfae53ebcce389eff0569e139"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8b6ab4b0a81e6669d2f306bcd229423e5d6a5801cf0a06ae48c15e380ca95ba2"
+    },
+    {
+      "path": "package.json",
+      "sha256": "72bc1ccd331246027cd5e8064d63c0c1c2cac1d6cae7aa85c9e41b3f86c427ab"
+    },
+    {
+      "path": "server.cjs",
+      "sha256": "10805e87913a0ba7f2747c1749eea7871675995575af4dacfb0d46f67371c7be"
+    },
+    {
+      "path": "styles.css",
+      "sha256": "00f8e263cd48117cc34f63a36c22af10d8d496991df97b108a5d0eb472271285"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@aws-sdk/checksums",
+      "version": "3.1001.2",
+      "license": "Apache-2.0",
+      "integrity": "sha512-gKRj5IXZ/O0ehk2rwfb55YygdNKNhK5N1l/Ztg/w06tk21AJtCPuyErETk2RS/6XOmpBkcZY6CN3GlQ2fWTh1g=="
+    },
+    {
+      "name": "@aws-sdk/client-s3",
+      "version": "3.1149.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-wEccG+3/ap7iIBO4DbWwqNHh2u5Qm5OCQJzJaAvtVFIoZbp0qia8HIXv4rpnNmJJEX8205mlq67F9QJ0nKlcxg=="
+    },
+    {
+      "name": "@aws-sdk/core",
+      "version": "3.978.2",
+      "license": "Apache-2.0",
+      "integrity": "sha512-ViOBLuGSSyPAmkKGJ6KJXtVN7MOEp3rnI7uH+kWxnHccvo8C9cvunEAnN5/oaZH1laQfsTBw7IOnmNkWlFZl2A=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-env",
+      "version": "3.972.73",
+      "license": "Apache-2.0",
+      "integrity": "sha512-PxlFZiF5IPUsPnuVSqjM9jlmRwZhL0xx40ccWfZiLQS8TRnHQpegpK1uAidatWuEqbJtbbY97A2Sezikz2AMUw=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-http",
+      "version": "3.972.75",
+      "license": "Apache-2.0",
+      "integrity": "sha512-Q/uIDy8eAVN7JgSKDg16F/f+hmNJj/ZyLJN8AkW2ofVdDgJVh8fO/A26iZ7YsvM2/k76hsf/u2lLAtyXsK8Ziw=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-ini",
+      "version": "3.973.18",
+      "license": "Apache-2.0",
+      "integrity": "sha512-KoyjZ9vdjuxEQ8obAH06xKP8H0WKqGhwUZLMqAOiS7G0xgUAht4X8f0ASLC/vhNLCWGblZOD3VQHWyTROGJHLg=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-login",
+      "version": "3.972.80",
+      "license": "Apache-2.0",
+      "integrity": "sha512-xF9A0gaO7k+1dYPFoo69OQatA9Ov0QuDZfqE8H0FLyIoOph+mlEC+I1Qo9UULupGuDfSYh+kVpfcDSxSYf/2fg=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-node",
+      "version": "3.972.85",
+      "license": "Apache-2.0",
+      "integrity": "sha512-CrFcML/xImiSlquH4W3V6Npz3aSkPXHDVciAU1JOBN0vqjmkcz9H9up2sCHQqN76J/WrT+TJ580L8h2joksQrg=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-process",
+      "version": "3.972.73",
+      "license": "Apache-2.0",
+      "integrity": "sha512-tyNnT4aVuOEXmKKKZPExBi828vRd9heshobBsKF0bov5EORHSJc1AGsHOMRP57sDt+dIuVASUOywaixiX26t4g=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-sso",
+      "version": "3.973.17",
+      "license": "Apache-2.0",
+      "integrity": "sha512-gxKTWaUk2gSbBOH4m3NPRfEKcGXeDAOgHr7nNG5JktR1xZLo0R+DpMjbcleoHbB0uJREOG7hjIRE635IuBWsRQ=="
+    },
+    {
+      "name": "@aws-sdk/credential-provider-web-identity",
+      "version": "3.972.79",
+      "license": "Apache-2.0",
+      "integrity": "sha512-/jn0Gs/qm6fs6nTIA5yncHayybz42SATZ3rNxCEBYPJ9v69PLrDRgk07E9xTT2gpRcNmDXXbi27ZbuU06N0Z6Q=="
+    },
+    {
+      "name": "@aws-sdk/middleware-sdk-s3",
+      "version": "3.972.78",
+      "license": "Apache-2.0",
+      "integrity": "sha512-W1kXIqMBkfrpVTbOOUSt63D2mEM4882TLqGWXjkZ1OcJ2ggSEWzgyjlyVDIHu/goGJSREd5s/KQ9wAgVZ0djeQ=="
+    },
+    {
+      "name": "@aws-sdk/nested-clients",
+      "version": "3.997.47",
+      "license": "Apache-2.0",
+      "integrity": "sha512-bovCKvDsLocNTzaj6VrrMVJ2BGROqO0JlwcGseO67a+I9Bo+08nUJhSQfZUIx4+A4a7I4101GEJd/AYm7dQ68w=="
+    },
+    {
+      "name": "@aws-sdk/signature-v4-multi-region",
+      "version": "3.996.48",
+      "license": "Apache-2.0",
+      "integrity": "sha512-cFDXfEbXaGwbnpvR/DyqfxfjxpjXVRVthQLgkwvcfDS5u3+8G9WSj1X1Ag/pTRg/QOeOno1Tq3ycEdrKsCUcOA=="
+    },
+    {
+      "name": "@aws-sdk/token-providers",
+      "version": "3.1149.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-CAwYyA8eVk1w6h8YgLvkjIOakWPwURaUFrP7BRVgkxTFUM+O87thyKsGKJ6rVPbP8eoEV10cBWQ5YfaYl3qSVQ=="
+    },
+    {
+      "name": "@aws-sdk/types",
+      "version": "3.974.6",
+      "license": "Apache-2.0",
+      "integrity": "sha512-v/clNZzZnDxGyvpHMOGpJKVXFAExJzUNAAjaWGdcx8QAcXLGwTaOkw33p5SHAi0YAioK32xB3hWwOekRVfmfKg=="
+    },
+    {
+      "name": "@aws-sdk/xml-builder",
+      "version": "3.972.41",
+      "license": "Apache-2.0",
+      "integrity": "sha512-ctjVSyCMegrWfXlx6VqzSBFI6UqmQ5ZlnfMhdLIiWmhoH8UAQxSCP5N3OpG7X3k4LnS7ou74C4mt20+bfTW2aQ=="
+    },
+    {
+      "name": "@aws/lambda-invoke-store",
+      "version": "0.3.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-sl4Bm6yiMNYrZKkqqDFWN0UfnWhlS8ivKxrYl+6t0gCLrqr8y3B2IqZZbFRkfaVVp7C/baApyh71P+LeE1A2sQ=="
+    },
+    {
+      "name": "@smithy/core",
+      "version": "3.35.2",
+      "license": "Apache-2.0",
+      "integrity": "sha512-ejTukBuP/Pg3t9N8Ux+0zKsXeHWm7p6W3HbXFOyltKasSxZwCFmvTut7kBdZSCF3m9y1bXXyVu6p2xuMFcsTyQ=="
+    },
+    {
+      "name": "@smithy/credential-provider-imds",
+      "version": "4.5.2",
+      "license": "Apache-2.0",
+      "integrity": "sha512-A9uSdn72ozbRUSit0eib0TW7nXuNPlaeM0zcGkJ+nE6tFcSDbnmtwoxbTCFBukVQcszDAyvsd7+rTduPTXpygg=="
+    },
+    {
+      "name": "@smithy/fetch-http-handler",
+      "version": "5.8.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-ycSJu3tFAQ4v04CBB0agqFMVsSQ1iG3yw+SpgxRqKfaURpQD4CZ8Wn0zPMmSnOuTpTh65Vz+EA0rMrw089wvkA=="
+    },
+    {
+      "name": "@smithy/node-http-handler",
+      "version": "4.12.1",
+      "license": "Apache-2.0",
+      "integrity": "sha512-ThMkboGeONWXAelq9FvGsuJC4rOi+qyC4/zhUF58xYpxUg5sQKx2VXZYJmtNjr4dSuBJ1HeJXETQILCz3wOHvw=="
+    },
+    {
+      "name": "@smithy/signature-v4",
+      "version": "5.7.4",
+      "license": "Apache-2.0",
+      "integrity": "sha512-tHy0K0VtqNd5Y7Y41h0a0Lhh0L1GzC08dTWg0F7vRJWFtTENg7IZikf3wQkanYIRdb7ngoIPMTmqgUi401fEeQ=="
+    },
+    {
+      "name": "@smithy/types",
+      "version": "4.19.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-r7jh49VJxGerfAcTQA6gXcKc+98zOp/tqRwzYjgOE+iSQsP6cEU1hq2QzbuipmP68QtYdY9wKEhiCQZIzHgZ4Q=="
+    },
+    {
+      "name": "@tabler/icons",
+      "version": "3.49.0",
+      "license": "MIT",
+      "integrity": "sha512-l+GnSkFETx0U26icxv1VUFnxxiTqXfCcVRiRAnyMwibupM2S2L/hSaZ9gmSgz01rkrsH/93NvLsxykqdanc6lw=="
+    },
+    {
+      "name": "bowser",
+      "version": "2.14.1",
+      "license": "MIT",
+      "integrity": "sha512-tzPjzCxygAKWFOJP011oxFHs57HzIhOEracIgAePE4pqB3LikALKnSzUyU4MGs9/iCEUuHlAJTjTc5M+u7YEGg=="
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
+    }
+  ],
+  "distributionStatus": "Local ad-hoc signing only; Developer ID and notarization require owner credentials",
+  "externalClients": [
+    "rclone",
+    "aliyunpan",
+    "BaiduPCS-Go",
+    "Quark CLI: verify bundled licenses separately"
+  ]
+}
