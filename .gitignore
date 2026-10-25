@@ -26,3 +26,9 @@ vendor/keychain-bridge
 *.sqlite*
 credentials.sealed.json
 .credentials-runtime/
+
+# Browse diagnostics and Python bytecode
+browse/
+__pycache__/
+*.py[cod]
+.quarkclouddrive/
